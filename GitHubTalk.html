@@ -1,44 +1,12 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-<title>GitHubTalk slides</title>
+<title>GitHubTalk</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="~/Users/tinapeters/Research/gitrepos/reveal.js/css/reveal.css">
-<link rel="stylesheet" href="~/Users/tinapeters/Research/gitrepos/reveal.js/css/theme/simple.css" id="theme">
-
-<!-- For syntax highlighting -->
-<link rel="stylesheet" href="~/Users/tinapeters/Research/gitrepos/reveal.js/lib/css/zenburn.css">
-
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = '~/Users/tinapeters/Research/gitrepos/reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-}
-
-</script>
-
-<!--[if lt IE 9]>
-<script src="~/Users/tinapeters/Research/gitrepos/reveal.js/lib/js/html5shiv.js"></script>
-<![endif]-->
-
-<!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 
 <style type="text/css">
     .clearfix{*zoom:1}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0}
@@ -1651,76 +1619,63 @@ span#checkpoint_status,span#autosave_status{font-size:small}
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-html {
-  overflow-y: auto;
+body {
+  overflow: visible;
+  padding: 8px;
 }
-.reveal {
-  font-size: 160%;
+
+div#notebook {
+  overflow: visible;
+  border-top: none;
 }
-.reveal pre {
-  width: inherit;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-}
-.reveal section img {
-  border: 0px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-}
-.reveal i {
-  font-style: normal;
-  font-family: FontAwesome;
-  font-size: 2em;
-}
-.reveal .slides {
-  text-align: left;
-}
-.reveal.fade {
-  opacity: 1;
-}
-.reveal .progress {
-  position: static;
-}
-div.input_area {
-  padding: 0.06em;
-}
-div.code_cell {
-  background-color: transparent;
-}
-div.prompt {
-  width: 11ex;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  text-align: right;
-}
-div.output_area pre {
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-}
-div.output_prompt {
-  /* 5px right shift to account for margin in parent container */
-  margin: 5px 5px 0 0;
-}
-.rendered_html p {
-  text-align: inherit;
+
+@media print {
+  div.cell {
+    display: block;
+    page-break-inside: avoid;
+  } 
+  div.output_wrapper { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+  div.output { 
+    display: block;
+    page-break-inside: avoid; 
+  }
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-</head>
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
 
+</head>
 <body>
-<div class="reveal">
-<div class="slides">
-<section>
-    <section>
-    
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1738,10 +1693,7 @@ div.output_prompt {
 </ol>
 </div>
 </div>
-</div></section>
-    </section><section>
-    <section>
-    
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1760,11 +1712,10 @@ div.output_prompt {
 </ol>
 </div>
 </div>
-</div></section><section>
-    
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -1812,8 +1763,7 @@ div.output_prompt {
 </div>
 </div>
 
-</div></section><section>
-    
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1855,12 +1805,11 @@ And enterprises of great pitch and moment,
 With this regard their Currents turn awry,
 And lose the name of Action. Soft you now,
 The fair Ophelia. Nymph, in thy Orisons
-Be all my sins remembered.</p>
+Be all my sins remembered.[4]</p>
 </blockquote>
 </div>
 </div>
-</div></section><section>
-    
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -1872,11 +1821,10 @@ Be all my sins remembered.</p>
 \end{equation}</p>
 </div>
 </div>
-</div></section><section>
-    
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span> 
@@ -2243,11 +2191,10 @@ RCT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDbC
 </div>
 </div>
 
-</div></section><section>
-    
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
@@ -2262,7 +2209,7 @@ RCT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDbC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
 
 <div class="output_html rendered_html output_subarea output_pyout">
 <img src="http://www.soothetube.com/wp-content/uploads/2012/05/Bob-Ross2.jpg"/>
@@ -2273,122 +2220,21 @@ RCT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDbC
 </div>
 </div>
 
-</div></section>
-    </section><section>
-    <section>
-    
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="git-commands">Git Commands</h1>
-<ul>
-<li>The most challenging task with Git is to remember all of the commands</li>
-<li>Need a dictionary of git commands? Look no further!!</li>
-</ul>
-</div>
-</div>
-</div></section><section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="git-commands">Git Commands</h1>
-<ul>
-<li>git init<ul>
-<li>Initialize a folder as a git repository</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div><div class="fragment">
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>git clone <URL><ul>
-<li>Copies a repository on GitHub and downloads it locally on your computer</li>
-</ul>
-</li>
-</ul>
+<h1 id="github-command-definitions">Github Command Definitions</h1>
+<ol>
+<li>First</li>
+<li>Second</li>
+<li>Third</li>
+</ol>
 </div>
 </div>
 </div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>git pull<ul>
-<li>Download the contents of the online repository to your local computer</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>git add <file><ul>
-<li>Adds the file to a staging area to prepare for upload</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>git commit -m &quot;Message about commit&quot;<ul>
-<li>Prepares the file to be moved to the online repository with a message describing the change to the file</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>git push<ul>
-<li>Pushes the file or set of files to the online repository on GitHub</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2409,11 +2255,10 @@ RCT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDbC
 </ol>
 </div>
 </div>
-</div></section><section>
-    
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="err">$</span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s">&quot;[name]&quot;</span>
@@ -2425,26 +2270,7 @@ RCT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDbC
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_pyerr">
-<pre>
-<span class="ansicyan">  File </span><span class="ansigreen">&quot;&lt;ipython-input-4-1c90dac7469e&gt;&quot;</span><span class="ansicyan">, line </span><span class="ansigreen">1</span>
-<span class="ansired">    $git config --global user.name &quot;[name]&quot;</span>
-    ^
-<span class="ansired">SyntaxError</span><span class="ansired">:</span> invalid syntax
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-    
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2452,23 +2278,23 @@ RCT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDbC
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="how-to-use-git-for-version-control-by-yourself-">How to Use Git for Version Control (By yourself)</h1>
 <ol>
-<li>Go to github.com and login</li>
-<li>Make a new repository</li>
-<li>Copy the https clone URL</li>
-<li>On your command line, in the folder where you would like the code to be, &#39;clone&#39; this new repository</li>
-<li>In the cloned directory, start your new project.<ul>
-<li>Code, code, code...</li>
-</ul>
-</li>
+<li>Go to github.com and login
+ <img src="/path/to/img.jpg" alt="alt text" title="Title"></li>
+<li>Make a new repository
+ <img src="/path/to/img.jpg" alt="alt text" title="Title"></li>
+<li>Copy the https clone URL
+ <img src="/path/to/img.jpg" alt="alt text" title="Title"></li>
+<li>On your command line, in the folder where you would like the code to be, &#39;clone&#39; this new repository
+ <img src="/path/to/img.jpg" alt="alt text" title="Title"></li>
+<li>In the cloned directory, start your new project.</li>
 <li>Done working for the day, now push the code back up to GitHub to save your version.</li>
 </ol>
 </div>
 </div>
-</div></section><section>
-    
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="err">$</span><span class="n">git</span> <span class="n">add</span> <span class="n">mynewcode</span><span class="o">.</span><span class="n">py</span>
@@ -2482,26 +2308,7 @@ RCT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDbC
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_pyerr">
-<pre>
-<span class="ansicyan">  File </span><span class="ansigreen">&quot;&lt;ipython-input-5-c2e3055ae496&gt;&quot;</span><span class="ansicyan">, line </span><span class="ansigreen">1</span>
-<span class="ansired">    $git add mynewcode.py</span>
-    ^
-<span class="ansired">SyntaxError</span><span class="ansired">:</span> invalid syntax
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-    
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2519,11 +2326,10 @@ RCT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDbC
 </ol>
 </div>
 </div>
-</div></section><section>
-    
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="err">$</span><span class="n">git</span> <span class="n">pull</span>
@@ -2533,128 +2339,8 @@ RCT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDZCJP2IiIiINkIk/YiIiIg2QiT9iIiIiDbC
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_pyerr">
-<pre>
-<span class="ansicyan">  File </span><span class="ansigreen">&quot;&lt;ipython-input-6-97c8b6403e4d&gt;&quot;</span><span class="ansicyan">, line </span><span class="ansigreen">1</span>
-<span class="ansired">    $git pull</span>
-    ^
-<span class="ansired">SyntaxError</span><span class="ansired">:</span> invalid syntax
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="how-to-use-git-in-collaboartion">How to Use Git in Collaboartion</h1>
-<ol>
-<li>Find the repository of the person you want to collaborate with on GitHub.com</li>
-<li>Click &#39;Fork&#39; in the upper right corner of the screen.<ul>
-<li>Makes a copy of someone else&#39;s repository on your account.</li>
-</ul>
-</li>
-<li>Make all the changes you want to make.<ul>
-<li>Code, code, code...</li>
-</ul>
-</li>
-<li>Commit the changes to YOUR local code, to the &#39;master&#39; branch.</li>
-<li>Make a &#39;Pull Request&#39;, green button in top left.<ul>
-<li>brings up a page that shows line by line differences between original and yours</li>
-</ul>
-</li>
-<li>Click &#39;Make Pull Request&#39;<ul>
-<li>You should make a note to the owner of the original about why you want them to accept the change.</li>
-</ul>
-</li>
-<li>Click &#39;Create Pull Request&#39;<ul>
-<li>now it is submitted, and the owner can see and approve it.</li>
-</ul>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="how-to-use-git-in-collaboartion">How to Use Git in Collaboartion</h1>
-</div>
-</div>
-</div></section>
-    </section>
-</div>
-</div>
-
-<script src="~/Users/tinapeters/Research/gitrepos/reveal.js/lib/js/head.min.js"></script>
-
-<script src="~/Users/tinapeters/Research/gitrepos/reveal.js/js/reveal.js"></script>
-
-<script>
-
-// Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-controls: true,
-progress: true,
-history: true,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
-
-// Optional libraries used to extend on reveal.js
-dependencies: [
-{ src: "~/Users/tinapeters/Research/gitrepos/reveal.js/lib/js/classList.js", condition: function() { return !document.body.classList; } },
-{ src: "~/Users/tinapeters/Research/gitrepos/reveal.js/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-{ src: "~/Users/tinapeters/Research/gitrepos/reveal.js/plugin/notes/notes.js", async: true, condition: function() { return !!document.body.classList; } }
-]
-});
-</script>
-
-<!-- Loading mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration -->
-
-<script>
-Reveal.addEventListener( 'slidechanged', function( event ) {
-  window.scrollTo(0,0);
-  MathJax.Hub.Rerender(event.currentSlide);
-});
-</script>
-
+    </div>
+  </div>
 </body>
-
 </html>
